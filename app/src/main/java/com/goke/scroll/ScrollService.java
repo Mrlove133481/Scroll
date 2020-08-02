@@ -1,45 +1,27 @@
 package com.goke.scroll;
 
-import android.annotation.SuppressLint;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
-import android.graphics.Point;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
-import android.provider.Settings;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.Xml;
-import android.view.Display;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.IOException;
-
-public class FloatingButtonService extends Service {
+public class ScrollService extends Service {
     public static boolean isStarted = false;
 
     private WindowManager windowManager;
     private WindowManager.LayoutParams layoutParams;
-
     private ScrollTextView scrollTextView;
     private final IBinder mBinder = new MyCustomBinder();
-
 
     @Override
     public void onCreate() {
@@ -200,9 +182,9 @@ public class FloatingButtonService extends Service {
         if(width!=null&&!"".equals(width)){
             int mWidth = Integer.parseInt(width);
             if(mWidth < 1){
-               layoutParams.width=1;
+                layoutParams.width=1;
             }else if(mWidth>getWidthPixels()){
-              layoutParams.width= getWidthPixels();
+                layoutParams.width= getWidthPixels();
             }else {
                 layoutParams.width= mWidth;
             }
@@ -213,8 +195,8 @@ public class FloatingButtonService extends Service {
     }
 
     public class MyCustomBinder extends Binder {
-        FloatingButtonService getService() {
-            return FloatingButtonService.this;
+        ScrollService getService() {
+            return ScrollService.this;
         }
     }
 
@@ -226,13 +208,13 @@ public class FloatingButtonService extends Service {
     }
 
     private void showFloatingWindow() {
-            View view = View.inflate(getApplicationContext(),R.layout.scrolltextview,null);
-            scrollTextView = view.findViewById(R.id.scrollText);
-            scrollTextView.setText("测试文字 测试文字 测试文字 测试文字 测试文字 测试文字");
-            scrollTextView.setSpeed(4);
-            scrollTextView.setHorizontal(true);
-            scrollTextView.setBackgroundColor(Color.alpha(1));
-            windowManager.addView(scrollTextView, layoutParams);
+        View view = View.inflate(getApplicationContext(),R.layout.scrolltextview,null);
+        scrollTextView = view.findViewById(R.id.scrollText);
+        scrollTextView.setText("测试文字 测试文字 测试文字 测试文字 测试文字 测试文字");
+        scrollTextView.setSpeed(4);
+        scrollTextView.setHorizontal(true);
+        scrollTextView.setBackgroundColor(Color.alpha(1));
+        windowManager.addView(scrollTextView, layoutParams);
 
 
     }

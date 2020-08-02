@@ -16,7 +16,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    FloatingButtonService floatingButtonService;
+    ScrollService scrollService;
     Button textButton,speedButton,blackButton,whiteButton,intervalsButton,textSizeButton;
     Button upButton,downButton,leftButton,rightButton,resetLocationButton,resetButton,widthButton;
     EditText editText,speedText,intervalsText,textSizeText,widthText;
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(this, FloatingButtonService.class);
+        Intent intent = new Intent(this, ScrollService.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
         startService(intent);
 
@@ -39,43 +39,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.textButton:
-                floatingButtonService.setText(editText.getText().toString());
+                scrollService.setText(editText.getText().toString());
                 break;
             case R.id.intervalsButton:
-                floatingButtonService.setIntervals(intervalsText.getText().toString());
+                scrollService.setIntervals(intervalsText.getText().toString());
                 break;
             case R.id.speedButton:
-                floatingButtonService.setSpeed(speedText.getText().toString());
+                scrollService.setSpeed(speedText.getText().toString());
                 break;
             case R.id.blackButton:
-                floatingButtonService.setColor(Color.BLACK);
+                scrollService.setColor(Color.BLACK);
                 break;
             case R.id.whiteButton:
-                floatingButtonService.setColor(Color.WHITE);
+                scrollService.setColor(Color.WHITE);
                 break;
             case R.id.textSizeButton:
-                floatingButtonService.setTextSize(textSizeText.getText().toString());
+                scrollService.setTextSize(textSizeText.getText().toString());
                 break;
             case R.id.resetButton:
-                floatingButtonService.resetSetting();
+                scrollService.resetSetting();
                 break;
             case R.id.resetLocationButton:
-                floatingButtonService.resetLocation();
+                scrollService.resetLocation();
                 break;
             case R.id.upButton:
-                floatingButtonService.setUp();
+                scrollService.setUp();
                 break;
             case R.id.downButton:
-                floatingButtonService.setDown();
+                scrollService.setDown();
                 break;
             case R.id.leftButton:
-                floatingButtonService.setLeft();
+                scrollService.setLeft();
                 break;
             case R.id.rightButton:
-                floatingButtonService.setRight();
+                scrollService.setRight();
                 break;
             case R.id.widthButton:
-                floatingButtonService.setWidth(widthText.getText().toString());
+                scrollService.setWidth(widthText.getText().toString());
                 break;
         }
     }
@@ -84,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-           FloatingButtonService.MyCustomBinder binder = (FloatingButtonService.MyCustomBinder)service;
-           floatingButtonService = binder.getService();
-           floatingButtonService.setTextSize("20");
+            ScrollService.MyCustomBinder binder = (ScrollService.MyCustomBinder)service;
+            scrollService = binder.getService();
+            scrollService.setTextSize("20");
         }
 
         @Override
