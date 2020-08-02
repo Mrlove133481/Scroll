@@ -11,7 +11,7 @@
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:text="测试文字"
-     android:textSize="24sp"
+     android:textSize="20sp"
      app:layout_constraintBottom_toTopOf="@+id/guideline6"
      app:layout_constraintEnd_toStartOf="@+id/guideline"
      app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +19,13 @@
 
  <EditText
      android:id="@+id/editText"
-     android:layout_width="366dp"
+     android:layout_width="0dp"
      android:layout_height="wrap_content"
      android:ems="10"
      android:inputType="textPersonName"
      android:singleLine="false"
      app:layout_constraintBottom_toTopOf="@+id/guideline6"
-     app:layout_constraintEnd_toStartOf="@+id/guideline2"
+     app:layout_constraintEnd_toStartOf="@+id/guideline10"
      app:layout_constraintStart_toStartOf="@+id/guideline"
      app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
      android:text="确认"
      app:layout_constraintBottom_toTopOf="@+id/guideline6"
      app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintStart_toStartOf="@+id/guideline10"
      app:layout_constraintTop_toTopOf="parent" />
 
  <TextView
@@ -44,23 +44,69 @@
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:text="间隔时间"
-     android:textSize="24sp"
+     android:textSize="20sp"
      app:layout_constraintBottom_toTopOf="@+id/guideline5"
      app:layout_constraintEnd_toStartOf="@+id/guideline"
      app:layout_constraintStart_toStartOf="parent"
      app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
+ <TextView
+     android:id="@+id/textSizeView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="字体大小"
+     android:textSize="20sp"
+     app:layout_constraintBottom_toTopOf="@+id/guideline4"
+     app:layout_constraintEnd_toStartOf="@+id/guideline"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+ <TextView
+     android:id="@+id/widthView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="宽度范围"
+     android:textSize="20sp"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toStartOf="@+id/guideline"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
  <EditText
      android:id="@+id/intervalsText"
-     android:layout_width="366dp"
+     android:layout_width="0dp"
      android:layout_height="wrap_content"
      android:ems="10"
      android:hint=">0s"
      android:inputType="number"
      app:layout_constraintBottom_toTopOf="@+id/guideline5"
-     app:layout_constraintEnd_toStartOf="@+id/guideline2"
+     app:layout_constraintEnd_toStartOf="@+id/guideline9"
      app:layout_constraintStart_toStartOf="@+id/guideline"
      app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+ <EditText
+     android:id="@+id/textSizeText"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:ems="10"
+     android:hint="当前=20"
+     android:inputType="number"
+     app:layout_constraintBottom_toTopOf="@+id/guideline4"
+     app:layout_constraintEnd_toStartOf="@+id/guideline9"
+     app:layout_constraintStart_toStartOf="@+id/guideline"
+     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+ <EditText
+     android:id="@+id/widthText"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:ems="10"
+     android:hint="当前=800"
+     android:inputType="number"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toStartOf="@+id/guideline9"
+     app:layout_constraintStart_toStartOf="@+id/guideline"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
  <Button
      android:id="@+id/intervalsButton"
@@ -68,93 +114,189 @@
      android:layout_height="wrap_content"
      android:text="确认"
      app:layout_constraintBottom_toTopOf="@+id/guideline5"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintEnd_toStartOf="@+id/guideline7"
+     app:layout_constraintStart_toStartOf="@+id/guideline9"
      app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+ <Button
+     android:id="@+id/textSizeButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="确认"
+     app:layout_constraintBottom_toTopOf="@+id/guideline4"
+     app:layout_constraintEnd_toStartOf="@+id/guideline7"
+     app:layout_constraintStart_toEndOf="@+id/textSizeText"
+     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+ <Button
+     android:id="@+id/widthButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="确认"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toStartOf="@+id/guideline7"
+     app:layout_constraintStart_toStartOf="@+id/guideline9"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+ <Button
+     android:id="@+id/upButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="上"
+     app:layout_constraintBottom_toTopOf="@+id/guideline4"
+     app:layout_constraintEnd_toStartOf="@+id/guideline10"
+     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+ <Button
+     android:id="@+id/resetLocationButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="重置位置"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toStartOf="@+id/guideline10"
+     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+ <Button
+     android:id="@+id/rightButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="右"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="@+id/guideline10"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+ <Button
+     android:id="@+id/leftButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="左"
+     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     app:layout_constraintEnd_toStartOf="@+id/guideline2"
+     app:layout_constraintStart_toStartOf="@+id/guideline7"
+     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+ <Button
+     android:id="@+id/downButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="下"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toStartOf="@+id/guideline10"
+     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
  <TextView
      android:id="@+id/speedView"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:text="播放速度"
-     android:textSize="24dp"
-     app:layout_constraintBottom_toTopOf="@+id/guideline4"
-     app:layout_constraintEnd_toStartOf="@+id/guideline"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+     android:textSize="20sp"
+     app:layout_constraintBottom_toTopOf="@+id/guideline5"
+     app:layout_constraintEnd_toStartOf="@+id/guideline2"
+     app:layout_constraintStart_toStartOf="@+id/guideline7"
+     app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
-  <EditText
-      android:id="@+id/speedText"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:ems="10"
-      android:hint="1-100"
-      android:inputType="number"
-      app:layout_constraintBottom_toTopOf="@+id/guideline4"
-      app:layout_constraintEnd_toStartOf="@+id/guideline2"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toStartOf="@+id/guideline"
-      app:layout_constraintTop_toTopOf="@+id/guideline5" />
+ <EditText
+     android:id="@+id/speedText"
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:ems="10"
+     android:hint="1-100 当前=4"
+     android:inputType="number"
+     app:layout_constraintBottom_toTopOf="@+id/guideline5"
+     app:layout_constraintEnd_toStartOf="@+id/guideline10"
+     app:layout_constraintStart_toStartOf="@+id/guideline2"
+     app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
  <Button
      android:id="@+id/speedButton"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:text="确认"
-     app:layout_constraintBottom_toTopOf="@+id/guideline4"
+     app:layout_constraintBottom_toTopOf="@+id/guideline5"
      app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="@+id/guideline2"
-     app:layout_constraintTop_toTopOf="@+id/guideline5" />
+     app:layout_constraintStart_toStartOf="@+id/guideline10"
+     app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
  <TextView
      android:id="@+id/colorView"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:text="文字颜色"
-     android:textSize="24dp"
-     app:layout_constraintBottom_toTopOf="@+id/guideline3"
+     android:textSize="20sp"
+     app:layout_constraintBottom_toBottomOf="parent"
      app:layout_constraintEnd_toStartOf="@+id/guideline"
      app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+     app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
 
  <Button
      android:id="@+id/blackButton"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:layout_marginStart="24dp"
      android:text="黑色"
-     app:layout_constraintBottom_toTopOf="@+id/guideline3"
-     app:layout_constraintEnd_toStartOf="@+id/whiteButton"
-     app:layout_constraintHorizontal_bias="0.085"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toStartOf="@+id/guideline9"
      app:layout_constraintStart_toStartOf="@+id/guideline"
-     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+     app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
  <Button
      android:id="@+id/whiteButton"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:layout_marginStart="200dp"
      android:text="白色"
-     app:layout_constraintBottom_toTopOf="@+id/guideline3"
-     app:layout_constraintEnd_toStartOf="@+id/guideline2"
-     app:layout_constraintHorizontal_bias="0.089"
-     app:layout_constraintStart_toStartOf="@+id/guideline"
-     app:layout_constraintTop_toTopOf="@+id/guideline4" />
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toStartOf="@+id/guideline7"
+     app:layout_constraintStart_toStartOf="@+id/guideline9"
+     app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
+ <Button
+     android:id="@+id/resetButton"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="恢复默认设置"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toStartOf="@+id/guideline2"
+     app:layout_constraintStart_toStartOf="@+id/guideline7"
+     app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
  <androidx.constraintlayout.widget.Guideline
      android:id="@+id/guideline"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:orientation="vertical"
-     app:layout_constraintGuide_percent="0.2" />
+     app:layout_constraintGuide_percent="0.15" />
+
+ <androidx.constraintlayout.widget.Guideline
+     android:id="@+id/guideline9"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     app:layout_constraintGuide_percent="0.35" />
+
+ <androidx.constraintlayout.widget.Guideline
+     android:id="@+id/guideline7"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     app:layout_constraintGuide_percent="0.5" />
 
  <androidx.constraintlayout.widget.Guideline
      android:id="@+id/guideline2"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
      android:orientation="vertical"
-     app:layout_constraintGuide_percent="0.7" />
+     app:layout_constraintGuide_percent="0.65" />
+
+ <androidx.constraintlayout.widget.Guideline
+     android:id="@+id/guideline10"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     app:layout_constraintGuide_percent="0.85" />
 
  <androidx.constraintlayout.widget.Guideline
      android:id="@+id/guideline3"

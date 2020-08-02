@@ -44,8 +44,11 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
     private int viewWidth = 0;
     private int viewHeight = 0;
     private float textWidth = 0f;
+    private float distance = 0f;
     private float textX = 0f;
     private float textY = 0f;
+    private float oldXTextWidth = 0f;
+    private float oldYDistance = 0f;
     private float viewWidth_plus_textLength = 0.0f;
     private int intervals =0;
     private ScheduledExecutorService scheduledExecutorService;
@@ -103,11 +106,10 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // TODO Auto-generated method stub
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.d(TAG, "onMeasure: "+widthMeasureSpec);
         int mHeight = getFontHeight(textSize);      //实际的视图高
         viewWidth = MeasureSpec.getSize(widthMeasureSpec);
         viewHeight = MeasureSpec.getSize(heightMeasureSpec);
-
+        Log.d(TAG, "onMeasure: viewWidth "+viewWidth+" viewHeight "+viewHeight);
         // when layout width or height is wrap_content ,should init ScrollTextView Width/Height
         if (getLayoutParams().width == ViewGroup.LayoutParams.WRAP_CONTENT && getLayoutParams().height == ViewGroup.LayoutParams.WRAP_CONTENT) {
             setMeasuredDimension(viewWidth, mHeight);
@@ -412,7 +414,7 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
         float fontHeight = paint.getFontMetrics().bottom - paint.getFontMetrics().top;
 
         FontMetrics fontMetrics = paint.getFontMetrics();
-        float distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+        distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
         float baseLine = viewHeight / 2 + distance;
 
         for (int n = 0; n < strings.size(); n++) {
@@ -473,16 +475,17 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
      * measure text
      */
     private void measureVarious() {
+
         Log.d(TAG, "measureVarious: "+text);
         textWidth = paint.measureText(text);
         Log.d(TAG, "measureVarious: "+textWidth);
         viewWidth_plus_textLength = viewWidth + textWidth;
         textX = viewWidth - viewWidth / 5;
-
         //baseline measure !
         FontMetrics fontMetrics = paint.getFontMetrics();
-        float distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+        distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
         textY = viewHeight / 2 + distance;
+
     }
 
 
@@ -494,8 +497,8 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
         @Override
         public void run() {
 
-            measureVarious();
 
+            measureVarious();
             while (!stopScroll) {
 
                 // NoNeed Scroll，短文不滚动
@@ -514,10 +517,12 @@ public class ScrollTextView extends SurfaceView implements SurfaceHolder.Callbac
                         }
                         continue;
                     }
-
+                    FontMetrics fontMetrics = paint.getFontMetrics();
+                    distance = (fontMetrics.bottom - fontMetrics.top) / 2 - fontMetrics.bottom;
+                    textY = viewHeight / 2 + distance;
                     draw(viewWidth - textX, textY);
                     textX += speed;
-                    if (textX > viewWidth_plus_textLength) {
+                    if (textX >viewWidth+paint.measureText(text)) {
                         textX = 0;
                         --needScrollTimes;
                     }
